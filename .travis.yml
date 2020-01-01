@@ -13,4 +13,4 @@ before_install:
 
 # commands to be run on tests
 script:
-  - docker run narteysarso/docker-react npm run test -- --coverage
+  - docker run narteysarso/docker-react yarn run test --watchAll=false
