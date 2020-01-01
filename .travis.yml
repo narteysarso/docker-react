@@ -1,0 +1,16 @@
+# ensure super user permissions
+sudo: required
+
+# create services
+services:
+  # install docker
+  - docker
+
+# commands to executed before tests are run
+before_install:
+  # build container image from development dockerfile
+  - docker build -t narteysarso/docker-react -f Dockerfile.dev . 
+
+# commands to be run on tests
+script:
+  - docker run narteysarso/docker-react npm run test -- --coverage
