@@ -11,7 +11,7 @@ COPY package.json .
 RUN npm install
 
 #copy rest of directory
-#COPY . .
+COPY . .
 
 #set initial command
 CMD ["npm","run","start"]
