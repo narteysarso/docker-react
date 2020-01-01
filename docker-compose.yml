@@ -1,0 +1,23 @@
+version: "3"
+services: 
+  web: 
+    #modified with context and a customer dockerfile
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    
+    #set container files references to machine files
+    volumes:
+      - /app/node_modules #bookmarks so there are not overwritten
+      - .:/app #references current directory to container /app directory
+
+  tests:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - /app/node_modules
+      - ./:/app
+    command: ["npm","run","test"] #overrides default startup command in dockerfile
