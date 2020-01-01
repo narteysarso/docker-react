@@ -1,9 +1,9 @@
 FROM node:alpine as buildphase
 WORKDIR '/app'
 COPY package.json .
-RUN npm install
+RUN yarn install
 COPY . .
-RUN npm build
+RUN yarn build
 #NB: No need to add a container default command bcos this is not our run phase
 
 FROM nginx
